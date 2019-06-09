@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-
+const APPBAR_SCROLL_OFFSET = 100;
 class HomePage extends StatefulWidget{
   @override
   _HomePageStates createState()=> _HomePageStates();
@@ -11,6 +11,8 @@ class _HomePageStates extends State<HomePage>{
     initialPage: 0,
   );
 
+  double appBarAlpha = 0;
+
   List _imageUrls = [
     'http://c.hiphotos.baidu.com/zhidao/pic/item/9e3df8dcd100baa16788650b4410b912c9fc2edd.jpg',
     'https://www.bing.com/th?id=OIP.wgX4nbb1HaoZw6AUee9rjQHaEn&pid=Api&rs=1&p=0',
@@ -18,7 +20,16 @@ class _HomePageStates extends State<HomePage>{
   ];
 
   _onScroll(offset){
-    print(offset);
+    double alpha = offset/APPBAR_SCROLL_OFFSET;
+    if(alpha<0){
+      alpha=0;
+    }else if(alpha>1){
+      alpha=1;
+    }
+
+    setState(() {
+      appBarAlpha =alpha;
+    });
   }
 
   @override
@@ -63,7 +74,20 @@ class _HomePageStates extends State<HomePage>{
                   ],
                 ),
               )
+          ),
+          Opacity(
+            opacity: appBarAlpha,
+            child: Container(
+              height: 80,
+              decoration: BoxDecoration(color: Colors.white),
+              child: Center(
+                child: Padding(padding: EdgeInsets.only(top: 20),
+                  child: Text('首页'),
+                ),
+              ),
+            ),
           )
+
         ],
       )
     );
