@@ -23,22 +23,29 @@ class _HomePageStates extends State<HomePage>{
     // TODO: implement build
     return Scaffold(
       body: Center(
-        child: Column(
+        child: ListView(
           children: <Widget>[
             Container(
               height: 160,
-              child: Swiper(
-                  itemCount: _imageUrls.length,
-                  autoplay: true,
+              child:Swiper(
+                itemCount: _imageUrls.length,
+                autoplay: true,
                 itemBuilder: (BuildContext context, int index){
-                    return Image.network(
-                      _imageUrls[index],
-                      fit: BoxFit.fill,
-                    );
+                  return Image.network(
+                    _imageUrls[index],
+                    fit: BoxFit.fill,
+                  );
                 },
                 pagination: SwiperPagination(),
               ),
+            ),
+            Container(
+              height: 800,
+              child: ListTile(
+                title: Text('hahhah'),
+              )
             )
+
           ],
         ),
       )

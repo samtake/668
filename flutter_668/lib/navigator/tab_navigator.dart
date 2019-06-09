@@ -56,7 +56,7 @@ class _TabNavitorStates extends State<TabNavigator>{
         BottomNavigationBarItem(
             icon: Icon( Icons.restaurant, color:_defaultColor ),
             activeIcon:Icon( Icons.restaurant, color: _activeColor),
-            title: Text('运动馆',
+            title: Text('去哪浪',
               style: TextStyle(
                   color: _currentIndex != 1 ? _defaultColor : _activeColor),
             )),
@@ -72,7 +72,7 @@ class _TabNavitorStates extends State<TabNavigator>{
         BottomNavigationBarItem(
             icon: Icon( Icons.directions_walk, color:_defaultColor ),
             activeIcon:Icon( Icons.directions_walk, color: _activeColor),
-            title: Text('健康跑',
+            title: Text('锻炼',
               style: TextStyle(
                   color: _currentIndex != 3 ? _defaultColor : _activeColor),
             )),
