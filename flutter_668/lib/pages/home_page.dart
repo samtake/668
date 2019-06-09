@@ -22,7 +22,9 @@ class _HomePageStates extends State<HomePage>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Center(
+      body: MediaQuery.removePadding(
+        removeTop: true,
+        context: context,
         child: ListView(
           children: <Widget>[
             Container(
@@ -40,10 +42,10 @@ class _HomePageStates extends State<HomePage>{
               ),
             ),
             Container(
-              height: 800,
-              child: ListTile(
-                title: Text('hahhah'),
-              )
+                height: 800,
+                child: ListTile(
+                  title: Text('hahhah'),
+                )
             )
 
           ],
