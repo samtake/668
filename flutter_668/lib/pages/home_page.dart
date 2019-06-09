@@ -17,6 +17,9 @@ class _HomePageStates extends State<HomePage>{
     'https://www.bing.com/th?id=OIP.r__gEI3f4onTji9tuFis5gHaKc&pid=Api&rs=1&p=0'
   ];
 
+  _onScroll(offset){
+    print(offset);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,31 +28,38 @@ class _HomePageStates extends State<HomePage>{
       body: MediaQuery.removePadding(
         removeTop: true,
         context: context,
-        child: ListView(
-          children: <Widget>[
-            Container(
-              height: 160,
-              child:Swiper(
-                itemCount: _imageUrls.length,
-                autoplay: true,
-                itemBuilder: (BuildContext context, int index){
-                  return Image.network(
-                    _imageUrls[index],
-                    fit: BoxFit.fill,
-                  );
-                },
-                pagination: SwiperPagination(),
+        child: NotificationListener(
+          onNotification: (scrollNotification){
+            if (scrollNotification is ScrollUpdateNotification &&scrollNotification.depth==0){
+              //滚动切实列表滚动的时候&&第零个元素
+              _onScroll(scrollNotification.metrics.pixels);
+            }
+          },
+          child: ListView(
+            children: <Widget>[
+              Container(
+                height: 160,
+                child:Swiper(
+                  itemCount: _imageUrls.length,
+                  autoplay: true,
+                  itemBuilder: (BuildContext context, int index){
+                    return Image.network(
+                      _imageUrls[index],
+                      fit: BoxFit.fill,
+                    );
+                  },
+                  pagination: SwiperPagination(),
+                ),
               ),
-            ),
-            Container(
-                height: 800,
-                child: ListTile(
-                  title: Text('hahhah'),
-                )
-            )
-
-          ],
-        ),
+              Container(
+                  height: 800,
+                  child: ListTile(
+                    title: Text('hahhah'),
+                  )
+              )
+            ],
+          ),
+        )
       )
     );
   }
