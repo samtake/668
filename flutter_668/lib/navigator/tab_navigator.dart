@@ -48,7 +48,7 @@ class _TabNavitorStates extends State<TabNavigator>{
         BottomNavigationBarItem(
             icon: Icon( Icons.home, color:_defaultColor ),
             activeIcon:Icon( Icons.home, color: _activeColor),
-            title: Text('首页',
+            title: Text('home',
                 style: TextStyle(
                     color: _currentIndex != 0 ? _defaultColor : _activeColor),
             )),
@@ -56,7 +56,7 @@ class _TabNavitorStates extends State<TabNavigator>{
         BottomNavigationBarItem(
             icon: Icon( Icons.restaurant, color:_defaultColor ),
             activeIcon:Icon( Icons.restaurant, color: _activeColor),
-            title: Text('去哪浪',
+            title: Text('sport',
               style: TextStyle(
                   color: _currentIndex != 1 ? _defaultColor : _activeColor),
             )),
@@ -64,7 +64,7 @@ class _TabNavitorStates extends State<TabNavigator>{
         BottomNavigationBarItem(
             icon: Icon( Icons.comment, color:_defaultColor ),
             activeIcon:Icon( Icons.comment, color: _activeColor),
-            title: Text('朋友圈',
+            title: Text('friend',
               style: TextStyle(
                   color: _currentIndex != 2 ? _defaultColor : _activeColor),
             )),
@@ -72,7 +72,7 @@ class _TabNavitorStates extends State<TabNavigator>{
         BottomNavigationBarItem(
             icon: Icon( Icons.directions_walk, color:_defaultColor ),
             activeIcon:Icon( Icons.directions_walk, color: _activeColor),
-            title: Text('锻炼',
+            title: Text('run',
               style: TextStyle(
                   color: _currentIndex != 3 ? _defaultColor : _activeColor),
             )),
@@ -80,7 +80,7 @@ class _TabNavitorStates extends State<TabNavigator>{
         BottomNavigationBarItem(
             icon: Icon( Icons.account_circle, color:_defaultColor ),
             activeIcon:Icon( Icons.account_circle, color: _activeColor),
-            title: Text('个人中心',
+            title: Text('me',
               style: TextStyle(
                   color: _currentIndex != 4 ? _defaultColor : _activeColor),
             )),
