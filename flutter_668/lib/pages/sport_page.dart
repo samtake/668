@@ -75,9 +75,9 @@ class _SportPageStates extends State<SportPage> {
                     return Theme(
                       data: Theme.of(context)
                           .copyWith(scaffoldBackgroundColor: Colors.grey[100]),
-                      child: SyArea(
-                        title: Text('请选择地址'),
-                      ),
+//                      child: SyArea(
+//                        title: Text('请选择地址'),
+//                      ),
                     );
                   },
                   fullscreenDialog: true));

@@ -1,5 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_668/dao/home_dao.dart';
+import 'package:flutter_668/model/common_model.dart';
+import 'package:flutter_668/model/grid_nav_model.dart';
+import 'package:flutter_668/model/home_model.dart';
+import 'package:flutter_668/widgets/grid_nav.dart';
+import 'package:flutter_668/widgets/local_nav.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+
 const APPBAR_SCROLL_OFFSET = 100;
 class HomePage extends StatefulWidget{
   @override
@@ -12,12 +21,22 @@ class _HomePageStates extends State<HomePage>{
   );
 
   double appBarAlpha = 0;
+  var resultString = '';
+  List<CommonModel> localNavList = [];
 
+//banner image url 
   List _imageUrls = [
     'http://c.hiphotos.baidu.com/zhidao/pic/item/9e3df8dcd100baa16788650b4410b912c9fc2edd.jpg',
     'https://www.bing.com/th?id=OIP.wgX4nbb1HaoZw6AUee9rjQHaEn&pid=Api&rs=1&p=0',
     'https://www.bing.com/th?id=OIP.r__gEI3f4onTji9tuFis5gHaKc&pid=Api&rs=1&p=0'
   ];
+
+@override
+void initState(){
+  super.initState();
+  _loadData();
+}
+
 
   _onScroll(offset){
     double alpha = offset/APPBAR_SCROLL_OFFSET;
@@ -30,6 +49,34 @@ class _HomePageStates extends State<HomePage>{
     setState(() {
       appBarAlpha =alpha;
     });
+  }
+
+
+  // _loadData(){
+  //   HomeDao.fetch().then((result){
+  //     setState((){
+  //       resultString = json.encode(result);
+  //     });
+  //   }).catchError((e){
+  //     resultString = e.toString();
+  //   });
+  // }
+
+  Future<Null> _loadData() async{
+    try{
+      HomeModel homeModel = await HomeDao.fetch();
+      setState(() {
+        resultString = json.encode(homeModel);
+        localNavList = homeModel.localNavList;
+      });
+    }catch (e){
+      setState(() {
+        // resultString = e.toString();
+        print(e);
+      });
+    }
+
+    return null;
   }
 
   @override
@@ -65,11 +112,14 @@ class _HomePageStates extends State<HomePage>{
                         pagination: SwiperPagination(),
                       ),
                     ),
+                    //  GridNav(gridNavModel:null,name:'huang'),
+                    LocalNav(localNavList: localNavList,),
                     Container(
                         height: 800,
                         child: ListTile(
-                          title: Text('hahhah'),
+                          title: Text('resultString'),
                         )
+
                     )
                   ],
                 ),
