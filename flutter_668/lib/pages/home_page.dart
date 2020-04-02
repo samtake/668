@@ -52,32 +52,34 @@ void initState(){
   }
 
 
-  // _loadData(){
-  //   HomeDao.fetch().then((result){
-  //     setState((){
-  //       resultString = json.encode(result);
-  //     });
-  //   }).catchError((e){
-  //     resultString = e.toString();
-  //   });
-  // }
+  //  _loadData(){
+  //    HomeDao.fetch().then((result){
+  //      setState((){
+  //        resultString = json.encode(result);
+  //        localNavList = result.localNavList;
+  //      });
+  //    }).catchError((e){
+  //      resultString = e.toString();
+  //    });
+  //  }
 
-  Future<Null> _loadData() async{
-    try{
-      HomeModel homeModel = await HomeDao.fetch();
-      setState(() {
-        resultString = json.encode(homeModel);
-        localNavList = homeModel.localNavList;
-      });
-    }catch (e){
-      setState(() {
-        // resultString = e.toString();
-        print(e);
-      });
-    }
+ Future<Null> _loadData() async{
+   try{
+     HomeModel homeModel = await HomeDao.fetch();
+     setState(() {
+       resultString = json.encode(homeModel);
+       localNavList = homeModel.localNavList;
+       print(localNavList);
+     });
+   }catch (e){
+     setState(() {
+       // resultString = e.toString();
+       print(e);
+     });
+   }
 
-    return null;
-  }
+   return null;
+ }
 
   @override
   Widget build(BuildContext context) {
@@ -112,12 +114,12 @@ void initState(){
                         pagination: SwiperPagination(),
                       ),
                     ),
-                    //  GridNav(gridNavModel:null,name:'huang'),
-                    LocalNav(localNavList: localNavList,),
+                     GridNav(gridNavModel:null,name:'huang'),
+                    LocalNav(localNavList: localNavList),
                     Container(
                         height: 800,
                         child: ListTile(
-                          title: Text('resultString'),
+                          title: Text(resultString),
                         )
 
                     )

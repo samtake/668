@@ -4,8 +4,11 @@ import 'package:flutter_668/model/common_model.dart';
 
 class LocalNav extends StatelessWidget {
   final List<CommonModel> localNavList;
-  final String name;
-  const LocalNav({Key key,@required this.localNavList,this.name='samtake'}) :super(key:key);
+
+
+  LocalNav({this.localNavList});
+
+  // const LocalNav({Key key,@required this.localNavList,this.name='samtake'}) :super(key:key);
 
   @override
   Widget build(BuildContext context){
@@ -24,18 +27,17 @@ class LocalNav extends StatelessWidget {
   }
 
   _items(BuildContext context){
-    if (localNavList==null) {
-      List<Widget> items = [];
-      localNavList.forEach((model){
-        items.add(_item(context,model));
-      });
+    if (localNavList==null)  return null;
 
-      //包裹，并设置排列方式
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: items.toList(),
-      );
-    }
+    List<Widget> items = [];
+    localNavList.forEach((model){
+      items.add(_item(context,model));
+    });
+    //包裹，并设置排列方式
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: items,
+    );
   }
 
   Widget _item(BuildContext context,CommonModel model){

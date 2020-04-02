@@ -3,7 +3,7 @@ class CommonModel {
   final String title;
   final String url;
   final String statusBarColor;
-  final String hideAppBar;
+  final bool hideAppBar;
 
   CommonModel({this.icon,this.title,this.url,this.statusBarColor,this.hideAppBar});
 
@@ -26,5 +26,5 @@ class CommonModel {
     data['hideAppBar'] = this.hideAppBar;
     return data;
   }
-  
+
 }
