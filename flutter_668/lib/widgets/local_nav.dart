@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_668/model/common_model.dart';
+import 'package:flutter_668/util/navigator_util.dart';
+import 'package:flutter_668/widgets/webView.dart';
 // import 'package:flutter_668/model/grid_nav_model.dart';
 
 class LocalNav extends StatelessWidget {
   final List<CommonModel> localNavList;
+  final String name;
 
-
-  LocalNav({this.localNavList});
+  LocalNav({this.localNavList,this.name});
 
   // const LocalNav({Key key,@required this.localNavList,this.name='samtake'}) :super(key:key);
 
@@ -43,7 +45,10 @@ class LocalNav extends StatelessWidget {
   Widget _item(BuildContext context,CommonModel model){
     return GestureDetector(
       onTap: (){
-
+        NavigatorUtil.push(
+            context,
+            WebView(url: model.url,statusBarColor: model.statusBarColor,hideAppBar: model.hideAppBar,)
+            );
       },
       child: Column(
         children:<Widget>[
