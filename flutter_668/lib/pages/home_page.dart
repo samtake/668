@@ -24,6 +24,8 @@ class _HomePageStates extends State<HomePage>{
   var resultString = '';
   List<CommonModel> localNavList = [];
 
+  GridNavModel gridNavModel;
+
 //banner image url 
   List _imageUrls = [
     'http://c.hiphotos.baidu.com/zhidao/pic/item/9e3df8dcd100baa16788650b4410b912c9fc2edd.jpg',
@@ -69,6 +71,7 @@ void initState(){
      setState(() {
        resultString = json.encode(homeModel);
        localNavList = homeModel.localNavList;
+       gridNavModel = homeModel.gridNav;
        print(localNavList);
      });
    }catch (e){
@@ -114,8 +117,8 @@ void initState(){
                         pagination: SwiperPagination(),
                       ),
                     ),
-                     GridNav(gridNavModel:null,name:'huang'),
                     LocalNav(localNavList: localNavList),
+                    GridNav(gridNavModel:gridNavModel),
                     Container(
                         height: 800,
                         child: ListTile(
