@@ -7,6 +7,7 @@ import 'package:flutter_668/model/grid_nav_model.dart';
 import 'package:flutter_668/model/home_model.dart';
 import 'package:flutter_668/widgets/grid_nav.dart';
 import 'package:flutter_668/widgets/local_nav.dart';
+import 'package:flutter_668/widgets/sub_nav.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
@@ -25,6 +26,7 @@ class _HomePageStates extends State<HomePage>{
   List<CommonModel> localNavList = [];
 
   GridNavModel gridNavModel;
+  var subNavList;
 
 //banner image url 
   List _imageUrls = [
@@ -72,6 +74,7 @@ void initState(){
        resultString = json.encode(homeModel);
        localNavList = homeModel.localNavList;
        gridNavModel = homeModel.gridNav;
+       subNavList = homeModel.subNavList;
        print(localNavList);
      });
    }catch (e){
@@ -119,6 +122,7 @@ void initState(){
                     ),
                     LocalNav(localNavList: localNavList),
                     GridNav(gridNavModel:gridNavModel),
+                    SubNav(subNavList:subNavList),
                     Container(
                         height: 800,
                         child: ListTile(
