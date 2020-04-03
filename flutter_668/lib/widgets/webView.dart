@@ -161,10 +161,11 @@ class _WebViewState extends State<WebView> {
     );
   }
 
+//是否返回主页
   _isToMain(String url) {
     bool contain = false;
     for (final value in CATCH_URLS) {
-      if (url?.endsWith(value) ?? false) {
+      if (url?.endsWith(value) ?? false) {//url存在的时候跑ndsWith(value)；否则跑false
         contain = true;
       }
     }
